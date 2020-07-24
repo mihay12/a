@@ -1,0 +1,10 @@
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: gray;
+    height: 50px;
+}
+p {
+    color: white;
+}
