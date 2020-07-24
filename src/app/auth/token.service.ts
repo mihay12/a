@@ -15,7 +15,7 @@ export class TokenService implements HttpInterceptor{
     let authService = this.injector.get(AuthService);
     let tokenRequest = request.clone({
       setHeaders: {
-        Authorization: `jwt ${authService.getToken()}`
+        Authorization: `JWT ${authService.getToken()}`
       }
     })
     return next.handle(tokenRequest);
