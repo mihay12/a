@@ -11,8 +11,7 @@ import { BodyComponentComponent } from './home/body-component/body-component.com
 import { FooterComponentComponent } from './home/footer-component/footer-component.component';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
-import { CanActivateRouteGuard }   from './auth/can-activate-route.guard';
-import { TokenService } from './auth/token.service';
+import { TokenService } from './auth/service/token.service';
 
 @NgModule({
   declarations: [
@@ -30,7 +29,7 @@ import { TokenService } from './auth/token.service';
     BrowserAnimationsModule,
     HttpClientModule
   ],
-  providers: [AuthComponent, CanActivateRouteGuard, {
+  providers: [{
     provide: HTTP_INTERCEPTORS,
     useClass: TokenService,
     multi:true

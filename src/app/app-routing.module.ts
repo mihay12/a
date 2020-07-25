@@ -5,7 +5,8 @@ import { SecondLinkComponent } from './home/body-component/second-link/second-li
 import { ThirdLinkComponent } from './home/body-component/third-link/third-link.component';
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
-import { CanActivateRouteGuard }   from './auth/can-activate-route.guard';
+import { AuthGuard } from './auth/guard/auth.guard';
+import { HomeGuard } from './auth/guard/home.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +16,8 @@ const routes: Routes = [
   },
   {
     path: 'auth',
-    component: AuthComponent
+    component: AuthComponent,
+    canActivate: [AuthGuard]
   },
   {
     path: 'home',
@@ -23,20 +25,18 @@ const routes: Routes = [
       {
         path: 'first-link',
         component: FirstLinkComponent,
-        canActivate: [CanActivateRouteGuard]
       },
       {
         path: 'second-link',
         component: SecondLinkComponent,
-        canActivate: [CanActivateRouteGuard]
       },
       {
         path: 'third-link',
         component: ThirdLinkComponent,
-        canActivate: [CanActivateRouteGuard]
       },
     ],
-    canActivate: [CanActivateRouteGuard]
+    canActivate: [HomeGuard],
+    canLoad: [HomeGuard]
     }
   
 ];
