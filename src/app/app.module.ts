@@ -12,6 +12,7 @@ import { FooterComponentComponent } from './home/footer-component/footer-compone
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { TokenService } from './auth/service/token.service';
+import { FirstLinkComponent } from './home/body-component/first-link/first-link.component'
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TokenService } from './auth/service/token.service';
     BodyComponentComponent,
     FooterComponentComponent,
     AuthComponent,
-    HomeComponent
+    HomeComponent,
+    FirstLinkComponent
   ],
   imports: [
     BrowserModule,
