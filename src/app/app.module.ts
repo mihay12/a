@@ -12,7 +12,7 @@ import { FooterComponentComponent } from './home/footer-component/footer-compone
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { TokenService } from './auth/service/token.service';
-import { FirstLinkComponent } from './home/body-component/first-link/first-link.component'
+import { FirstLinkComponent } from './home/body-component/first-link/first-link.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +22,7 @@ import { FirstLinkComponent } from './home/body-component/first-link/first-link.
     FooterComponentComponent,
     AuthComponent,
     HomeComponent,
-    FirstLinkComponent
+    FirstLinkComponent,
   ],
   imports: [
     BrowserModule,
