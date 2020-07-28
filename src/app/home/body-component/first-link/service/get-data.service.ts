@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
-
+import { Plan } from '../plan.interface';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -10,7 +11,7 @@ export class GetDataService {
   
   url = 'http://app2.test.planohero.com/api/layout/planograms/';
 
-  getPlan() {
-    return this.http.get(this.url);
+  public getPlan(): Observable<Plan[]> {
+    return this.http.get<Plan[]>(this.url);
   }
 }

@@ -1,15 +1,18 @@
 <div>
   <h1>Plan</h1>
-  <ul>
+  <input [(ngModel)]="searchTerm">
     <table>
       <tr>
-        <th (click)=sort()>Назва плану</th>
-        <th (click)=sort()>Дата останньої зміни</th>
+        <th>
+          <a (click)="sortType('name')">Назва плану</a>
+        </th>
+        <th>
+          <a (click)="sortType('date')">Дата останньої зміни</a>
+        </th>
       </tr>
-      <tr *ngFor="let plan of plans">
+      <tr *ngFor="let plan of filteredPlans">
         <td>{{plan.name}}</td>
         <td>{{plan.update_date.substring(0,10)}}</td>
       </tr>
     </table>
-  </ul>
 </div>
