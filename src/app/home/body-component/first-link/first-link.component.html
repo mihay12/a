@@ -3,11 +3,11 @@
   <input [(ngModel)]="searchTerm">
     <table>
       <tr>
-        <th>
-          <a (click)="sortType('name')">Назва плану</a>
+        <th class="pointer" (click)="sort('name')">
+          <i class="type" [ngClass]="{'type-sort': column !== 'name','type-sort-asc': (column === 'name' && !isDesc),  'type-sort-desc': (column === 'name' && isDesc) }" aria-hidden="true">Назва плану</i>
         </th>
-        <th>
-          <a (click)="sortType('date')">Дата останньої зміни</a>
+        <th class="pointer" (click)="sort('update_date')">
+          <i class="type" [ngClass]="{'type-sort': column !== 'update_date','type-sort-asc': (column === 'update_date' && !isDesc),  'type-sort-desc': (column === 'update_date' && isDesc) }" aria-hidden="true">Дата останньої зміни</i>
         </th>
       </tr>
       <tr *ngFor="let plan of filteredPlans">

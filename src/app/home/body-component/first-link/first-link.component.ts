@@ -12,10 +12,7 @@ import { Plan } from './plan.interface';
 export class FirstLinkComponent implements OnInit {
 
   plans: Plan[];
-  filteredPlans: Plan[];
-  private searchString: string;
   errorMessage: string;
-  
   
   ngOnInit(): void {
     this.getData.getPlan().subscribe(
@@ -26,6 +23,11 @@ export class FirstLinkComponent implements OnInit {
   }
 
   constructor(private getData: GetDataService) { } 
+
+  //фільтраія по назві
+
+  filteredPlans: Plan[];
+  private searchString: string;
 
   get searchTerm(): string {
     return this.searchString;
@@ -41,26 +43,26 @@ export class FirstLinkComponent implements OnInit {
       plan.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
   }
 
-  sortType(sort: string) {
-    if(sort === 'name') {
-      this.plans = this.plans.sort(this.sortByName);
-      console.log(this.plans);
-    }
-    if(sort === 'date') {
-      this.plans = this.plans.sort(this.sortByDate);
-      console.log(this.plans);
-    }
-  }
+  //сортування по даті та назві
 
-  sortByName(a: Plan, b: Plan) { 
-      return ('' + b.name).localeCompare(a.name);
-  }
-    
+  isDesc: boolean;
+  column: string;
+  
+  sort(property){
+    this.isDesc = !this.isDesc; 
+    this.column = property;
+    let direction = this.isDesc ? 1 : -1;
 
-
-   sortByDate(a: Plan, b: Plan){
-    if (a.update_date < b.update_date) return -1;
-      else if(a.update_date > b.update_date) return  1;
-        else return  0;
-  }
+    this.filteredPlans.sort(function(a, b){
+        if(a[property] < b[property]){
+            return -1 * direction;
+        }
+        else if( a[property] > b[property]){
+            return 1 * direction;
+        }
+        else{
+            return 0;
+        }
+    });
+};
 }

@@ -23,7 +23,7 @@ const routes: Routes = [
     path: 'home',
     component: HomeComponent, children: [
       {
-        path: 'first-link',
+        path: 'plan',
         component: FirstLinkComponent,
       },
       {
