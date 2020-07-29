@@ -7,17 +7,15 @@ import { AuthService } from './auth.service';
 })
 export class TokenService implements HttpInterceptor{
 
-  constructor(
-    private injector: Injector
-    ) { }
+  constructor(private injector: Injector) { }
 
   intercept(request, next) {
-    let authService = this.injector.get(AuthService);
-    let tokenRequest = request.clone({
+    const authService = this.injector.get(AuthService);
+    const tokenRequest = request.clone({
       setHeaders: {
         Authorization: `JWT ${authService.getToken()}`
       }
-    })
+    });
     return next.handle(tokenRequest);
   }
 }

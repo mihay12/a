@@ -13,6 +13,8 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { TokenService } from './auth/service/token.service';
 import { FirstLinkComponent } from './home/body-component/first-link/first-link.component';
+import { FilterPipe } from './home/body-component/first-link/pipe/filter.pipe';
+import { SortPipe } from './home/body-component/first-link/pipe/sort.pipe';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { FirstLinkComponent } from './home/body-component/first-link/first-link.
     AuthComponent,
     HomeComponent,
     FirstLinkComponent,
+    FilterPipe,
+    SortPipe,
   ],
   imports: [
     BrowserModule,

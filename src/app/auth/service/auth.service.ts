@@ -8,28 +8,25 @@ import { Router } from '@angular/router';
 
 export class AuthService {
 
-  url = 'http://app2.test.planohero.com/api/auth/token/get/';
-
   constructor(
     private http: HttpClient, 
-    private router: Router
-    ) { }
+    private router: Router) { }
 
   loginUser(user) {
-    return this.http.post<any>(this.url, user)
+    const url = 'http://app2.test.planohero.com/api/auth/token/get/';
+    return this.http.post<any>(url, user);
   }
 
   logoutUser() {
-    localStorage.removeItem('token')
-    this.router.navigate(['/auth'])
+    localStorage.removeItem('token');
+    this.router.navigate(['/auth']);
   }
 
   getToken() {
-    return localStorage.getItem('token')
+    return localStorage.getItem('token');
   }
 
   loggedIn() {
-    return !!localStorage.getItem('token')    
+    return !!localStorage.getItem('token');
   }
-
 } 

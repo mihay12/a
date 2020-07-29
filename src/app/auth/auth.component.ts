@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService} from './service/auth.service';
 import { Router } from '@angular/router';
+import { AuthService} from './service/auth.service';
 
 @Component({
   selector: 'app-auth',
@@ -8,28 +8,27 @@ import { Router } from '@angular/router';
   styleUrls: ['./auth.component.css'],
 })
 export class AuthComponent implements OnInit {
+  
   credentials = {
     username: "",
     password: ""
-  }
+  };
   done: boolean = false;
   
   constructor(
     public authService: AuthService,
-    private router: Router
-    ) { }
+    private router: Router) { }
 
-  ngOnInit ( ) : void { }
+  ngOnInit() : void { }
 
-    handler() { 
+  handler() { 
     this.authService.loginUser(this.credentials)
       .subscribe(
         res => {
-          localStorage.setItem('token', res.token)
+          localStorage.setItem('token', res.token),
           this.router.navigate(['/home'])
         },
         err => console.log(err)
-      ) 
-    }
-  
+      ); 
+  }
 }

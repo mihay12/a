@@ -1,5 +1,4 @@
 export interface Plan {
-    date: string | number | Date;
     access: [];
     access_type: string;
     active: boolean;
