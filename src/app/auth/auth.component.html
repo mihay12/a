@@ -1,9 +1,7 @@
 <div>
-    <div>
-        <form (ngSubmit)="handler()">
-            <input type="text" name="username" [(ngModel)]="credentials.username" ngModel required> 
-            <input type="password" name="password" [(ngModel)]="credentials.password"  ngModel required>
-            <button>LogIn</button>
-        </form>
-    </div>
+    <form (ngSubmit)="handler()">
+        <input type="text" name="username" [(ngModel)]="credentials.username" ngModel required> 
+        <input type="password" name="password" [(ngModel)]="credentials.password"  ngModel required>
+        <button>Вхід</button>
+    </form>
 </div>

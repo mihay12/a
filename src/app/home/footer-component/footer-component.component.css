@@ -3,7 +3,11 @@ div {
     align-items: center;
     justify-content: center;
     background-color: gray;
-    height: 50px;
+    width: 100%;
+    /* position: fixed;
+    left: 0; 
+    bottom: 0;
+    padding: 10px; */
 }
 p {
     color: white;
