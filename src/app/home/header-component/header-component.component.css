@@ -1,16 +1,29 @@
-div h1 i {
-    color: lime;
-    padding: 10px 0 10px 0;
+div{
+    color: white;
+    padding: 5px 0 5px 0;
+    background-color: black;
 }
 
-div {
+div div span {
+    display: inline-block;
+    size:2rem;
+    margin:0 10px 0 10px;  
+    padding: 3px 10px 3px 10px;
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+
+div div span:hover { 
+    transition: 2s;
+    background-color: white;
+    color: black;
+}
+
+div div div.buttons {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: grey;
-    /* position: fixed;  
-    top: 0;  
-    left: 0;
-    z-index: 100;  
-    width: 100%;   */
+    justify-content: space-between;
+}
+
+.active {
+    color: red;
 }

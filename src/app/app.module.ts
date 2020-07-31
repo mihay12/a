@@ -12,9 +12,10 @@ import { FooterComponentComponent } from './home/footer-component/footer-compone
 import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { TokenService } from './auth/service/token.service';
-import { FirstLinkComponent } from './home/body-component/first-link/first-link.component';
-import { FilterPipe } from './home/body-component/first-link/pipe/filter.pipe';
-import { SortPipe } from './home/body-component/first-link/pipe/sort.pipe';
+import { PlanComponent } from './home/body-component/plan/plan.component';
+import { FilterPipe } from './home/body-component/plan/pipe/filter.pipe';
+import { SortPipe } from './home/body-component/plan/pipe/sort.pipe';
+import { PlanItemComponent } from './home/body-component/plan/plan-item/plan-item.component';
 
 @NgModule({
   declarations: [
@@ -24,9 +25,10 @@ import { SortPipe } from './home/body-component/first-link/pipe/sort.pipe';
     FooterComponentComponent,
     AuthComponent,
     HomeComponent,
-    FirstLinkComponent,
+    PlanComponent,
     FilterPipe,
     SortPipe,
+    PlanItemComponent,
   ],
   imports: [
     BrowserModule,

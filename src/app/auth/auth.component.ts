@@ -26,7 +26,7 @@ export class AuthComponent implements OnInit {
       .subscribe(
         res => {
           localStorage.setItem('token', res.token),
-          this.router.navigate(['/home'])
+          this.router.navigate(['/home/plan'])
         },
         err => console.log(err)
       ); 

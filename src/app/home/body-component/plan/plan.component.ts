@@ -4,16 +4,16 @@ import { GetDataService } from './service/get-data.service';
 import { Plan } from './plan.interface';
 
 @Component({
-  selector: 'app-first-link',
-  templateUrl: './first-link.component.html',
-  styleUrls: ['./first-link.component.css'],
+  selector: 'app-plan',
+  templateUrl: './plan.component.html',
+  styleUrls: ['./plan.component.css'],
 })
 
-export class FirstLinkComponent implements OnInit {
+export class PlanComponent implements OnInit {
 
   plans: Plan[];
   errorMessage: string;
-  searchText:string;
+  searchText: string;
   direction: number;
   isDesc: boolean;
   column: string;
@@ -29,4 +29,5 @@ export class FirstLinkComponent implements OnInit {
     this.column = property;
     this.direction = this.isDesc ? 1 : -1;
   }
+
 }

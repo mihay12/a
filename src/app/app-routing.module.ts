@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
-import { FirstLinkComponent } from './home/body-component/first-link/first-link.component';
+import { PlanComponent } from './home/body-component/plan/plan.component';
 import { SecondLinkComponent } from './home/body-component/second-link/second-link.component';
 import { ThirdLinkComponent } from './home/body-component/third-link/third-link.component';
 import { AuthComponent } from './auth/auth.component';
@@ -24,7 +24,7 @@ const routes: Routes = [
     component: HomeComponent, children: [
       {
         path: 'plan',
-        component: FirstLinkComponent,
+        component: PlanComponent,
       },
       {
         path: 'second-link',

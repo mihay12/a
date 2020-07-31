@@ -1,0 +1,13 @@
+.plan-item-container {
+    float: left;
+    width: 45%;
+    height: 300px;
+    border: 10px, solid, black;
+}
+
+.plan-item-container  .plan-image {
+    width: 100%;
+    height: 80%;
+    background-size: 100%;
+    border: 1px solid black;
+}
