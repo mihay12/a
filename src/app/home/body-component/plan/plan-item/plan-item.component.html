@@ -1,8 +1,10 @@
 <div class="plan-item-container" (mouseover)="changeItem=true" (mouseleave)="changeItem=false">
     <div class="plan-image" [ngStyle]="{'background-image': 'url(' + planImage + ')'}"></div>
     <div class="plan-panel">
-        <div class="plan-name-and-status">{{planName}}</div>
-        <div class="plan-last-update-date">Останнє оновлення: {{planUpdateDate.substring(0,10)}}</div>
+        <div class="plan-name">
+            <b>{{planName}}</b>
+        </div>
+        <div>Останнє оновлення: {{planUpdateDate.substring(0,10)}}</div>
     </div>
     <div class="hover-panel" *ngIf="changeItem">
         <div class="top-icons">

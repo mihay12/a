@@ -1,5 +1,18 @@
-.pointer {
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
+
+.type {
     cursor: pointer;
+    padding: 10px 5px;
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.type:hover {
+    transition: 1s;
+    color: black;
+    background-color: white;
 }
 
 .item-container {
@@ -11,4 +24,18 @@
 app-plan-item {
     border-radius: 3px;
     box-shadow: 1px 1px 3px black;
+    margin-bottom: 10px;
+}
+
+.input-search {
+    width: 25%;
+    height: 30px;
+    border-radius: 5px;
+    border: 2px solid black;
+    font-family: 'Inter', sans-serif;
+}
+
+.block-with-sorting {
+    display: flex;
+    justify-content: space-between;
 }

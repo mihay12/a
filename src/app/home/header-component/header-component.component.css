@@ -6,15 +6,16 @@ div{
 
 div div span {
     display: inline-block;
-    size:2rem;
+    size: 2rem;
     margin:0 10px 0 10px;  
     padding: 3px 10px 3px 10px;
     cursor: pointer;
     border: 1px solid transparent;
+    border-radius: 5px;
 }
 
 div div span:hover { 
-    transition: 2s;
+    transition: 1s;
     background-color: white;
     color: black;
 }

@@ -1,7 +1,8 @@
 <div>
     <form (ngSubmit)="handler()">
-        <input type="text" name="username" [(ngModel)]="credentials.username" ngModel required> 
-        <input type="password" name="password" [(ngModel)]="credentials.password"  ngModel required>
+        <h1>Авторизація</h1>
+        <input type="text" name="username" [(ngModel)]="credentials.username" ngModel placeholder="Введіть логін"> 
+        <input type="password" name="password" [(ngModel)]="credentials.password"  ngModel placeholder="Введіть пароль">
         <button>Вхід</button>
     </form>
 </div>
