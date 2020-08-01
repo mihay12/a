@@ -1,13 +1,114 @@
+a {
+    display: block;
+    color:white;
+    text-decoration: none;
+}
+
 .plan-item-container {
-    float: left;
-    width: 45%;
+    position: relative;
     height: 300px;
-    border: 10px, solid, black;
 }
 
 .plan-item-container  .plan-image {
     width: 100%;
     height: 80%;
     background-size: 100%;
-    border: 1px solid black;
+}
+
+.hover-panel {
+    color: coral;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: black;
+    opacity: 0.7;
+}
+
+.icon {
+    display: inline-block;
+    width: 100%;
+    height: 20px;
+    cursor: pointer;
+}
+
+.icon-view {
+    display: inline-block;
+    width: 100%;
+    height: 14px;
+    cursor: pointer;
+}
+
+.icon-copy {
+    width: 15px;
+    background-image:url(http://app2.test.planohero.com/static/img/icons/files-white.svg);
+}
+
+.icon-copy:hover, .icon-copy:focus {
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(1);
+}   
+
+.icon-edit {
+    width: 20px;
+    background-image:url(http://app2.test.planohero.com/static/img/icons/cog-white.svg);
+}
+
+.icon-edit:hover, .icon-edit:focus {
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(1);
+} 
+
+.icon-delete {
+    width: 16px;
+    background-image:url(http://app2.test.planohero.com/static/img/icons/trash-white.svg);
+}
+
+.icon-delete:hover, .icon-delete:focus {
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(1);
+} 
+
+.link-edit-plan:hover, .link-view-plan:hover {
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(1);
+
+}
+
+.icon-view-plan {
+    width: 25px;
+    background-image:url(http://app2.test.planohero.com/static/img/icons/eye-white.svg);
+}
+
+.icon-view-plan:hover, .icon-view-plan:focus {
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(1);
+} 
+
+.icon-edit-plan {
+    width: 20px;
+    background-image:url(http://app2.test.planohero.com/static/img/icons/pencil-white.svg);
+}   
+
+.icon-edit-plan:hover, .icon-edit-plan:focus {
+    filter: grayscale(100%) brightness(40%) sepia(100%) hue-rotate(-50deg) saturate(600%) contrast(1);
+} 
+
+.center-buttons { 
+    display: flex;
+    height: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.center-buttons div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-icons span {
+    display: block;
+    margin: 2px 3px 0 3px;
+}
+
+.top-icons {
+    display: flex;
+    justify-content: flex-end;
 }

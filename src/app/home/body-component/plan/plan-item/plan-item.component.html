@@ -1,7 +1,24 @@
-<div class="plan-item-container">
+<div class="plan-item-container" (mouseover)="changeItem=true" (mouseleave)="changeItem=false">
     <div class="plan-image" [ngStyle]="{'background-image': 'url(' + planImage + ')'}"></div>
     <div class="plan-panel">
         <div class="plan-name-and-status">{{planName}}</div>
         <div class="plan-last-update-date">Останнє оновлення: {{planUpdateDate.substring(0,10)}}</div>
+    </div>
+    <div class="hover-panel" *ngIf="changeItem">
+        <div class="top-icons">
+            <span class="icon icon-copy" (click)="copyPlan(planId)" title="Копіювати план"></span>
+            <span class="icon icon-edit" title="Налаштування план"></span>
+            <span class="icon icon-delete" (click)="deletePlan(planId)"  title="Видалити план"></span>
+        </div>
+        <div class="center-buttons">
+            <div>
+                <a class="icon-view icon-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + planId" target="_blank"></a>
+                <a class="link-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + planId" target="_blank">Переглянути</a>
+            </div>
+            <div>
+                <a class="icon icon-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + planId" target="_blank"></a>
+                <a class="link-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + planId" target="_blank">Редагувати</a>
+            </div>
+        </div>
     </div>
 </div>

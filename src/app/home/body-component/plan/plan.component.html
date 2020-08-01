@@ -1,7 +1,8 @@
 <div>
     <h1 align="center">Плани магазинів</h1>
     <div><input [(ngModel)]="searchText">
-    </div><!-- <div>
+    </div>
+    <div>
         <p class="pointer" (click)="sort('name')">
             <i class="type"
                 [ngClass]="{'type-sort': column !== 'name','type-sort-asc': (column === 'name' && !isDesc),  'type-sort-desc': (column === 'name' && isDesc) }"
@@ -12,8 +13,10 @@
                 [ngClass]="{'type-sort': column !== 'update_date','type-sort-asc': (column === 'update_date' && !isDesc),  'type-sort-desc': (column === 'update_date' && isDesc) }"
                 aria-hidden="true">Дата останньої зміни</i>
         </p>
-    </div> -->
-    <app-plan-item *ngFor="let plan of plans | filter: searchText | sort: {property: column, direction: direction}"
-        [planName]="plan.name" [planUpdateDate]="plan.update_date" [planImage]="plan.image">
-    </app-plan-item>
+    </div>
+    <div class="item-container">
+        <app-plan-item *ngFor="let plan of plans | filter: searchText | sort: {property: column, direction: direction}"
+            [planName]="plan.name" [planUpdateDate]="plan.update_date" [planImage]="plan.image" [planId]="plan.id">
+        </app-plan-item>
+    </div>
 </div>
