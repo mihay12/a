@@ -1,26 +1,33 @@
 <div class="plan-item-container" (mouseover)="changeItem=true" (mouseleave)="changeItem=false">
-    <div class="plan-image" [ngStyle]="{'background-image': 'url(' + planImage + ')'}"></div>
+    <div class="plan-image" [ngStyle]="{'background-image': 'url(' + plan.image + ')'}"></div>
     <div class="plan-panel">
         <div class="plan-name">
-            <b>{{planName}}</b>
+            <b>{{plan.name}}</b>
         </div>
-        <div>Останнє оновлення: {{planUpdateDate.substring(0,10)}}</div>
+        <div>Останнє оновлення: {{plan.update_date.substring(0,10)}}</div>
     </div>
     <div class="hover-panel" *ngIf="changeItem">
         <div class="top-icons">
-            <span class="icon icon-copy" (click)="copyPlan(planId)" title="Копіювати план"></span>
-            <span class="icon icon-edit" title="Налаштування план"></span>
-            <span class="icon icon-delete" (click)="deletePlan(planId)"  title="Видалити план"></span>
+            <span class="icon icon-copy" (click)="copy.emit(plan.id)" title="Копіювати план"></span>
+            <span class="icon icon-edit" (click)="openModel(settings-plan)" title="Налаштування план"></span>
+            <span class="icon icon-delete" (click)="delete.emit(plan.id)"  title="Видалити план"></span>
         </div>
         <div class="center-buttons">
             <div>
-                <a class="icon-view icon-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + planId" target="_blank"></a>
-                <a class="link-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + planId" target="_blank">Переглянути</a>
+                <a class="icon-view icon-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" target="_blank"></a>
+                <a class="link-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" target="_blank">Переглянути</a>
             </div>
             <div>
-                <a class="icon icon-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + planId" target="_blank"></a>
-                <a class="link-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + planId" target="_blank">Редагувати</a>
+                <a class="icon icon-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + plan.id" target="_blank"></a>
+                <a class="link-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + plan.id" target="_blank">Редагувати</a>
             </div>
         </div>
     </div>
 </div>
+
+<modal-window id="settings-plan">
+    <h1>Hello settings</h1>
+
+    <button></button>
+    <button (click)="closeModal('settings-plan')"> Close</button>
+</modal-window>

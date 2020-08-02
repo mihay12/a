@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { GetDataService } from './service/get-data.service';
+import { PlanService } from './service/plan.service';
 import { Plan } from './plan.interface';
 
 @Component({
@@ -18,10 +18,18 @@ export class PlanComponent implements OnInit {
   isDesc: boolean;
   column: string;
 
-  constructor(private shopPlans: GetDataService) { } 
+  constructor(private shopPlans: PlanService) { } 
   
   async ngOnInit(): Promise<void> {
-    this.plans = await this.shopPlans.getPlan();
+    this.plans = await this.shopPlans.getPlanRequest();
+  }
+  
+  async deletePlan(planId: number) {
+    return await this.shopPlans.deletePlanRequest(planId);
+  }
+
+  async copyPlan(planId: number) {
+    return await this.shopPlans.copyPlanRequest(planId);
   }
 
   sort(property) {

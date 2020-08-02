@@ -15,7 +15,7 @@
     </div>
     <div class="item-container">
         <app-plan-item *ngFor="let plan of plans | filter: searchText | sort: {property: column, direction: direction}"
-            [planName]="plan.name" [planUpdateDate]="plan.update_date" [planImage]="plan.image" [planId]="plan.id">
+            [plan]="plan" (copy)="copyPlan(plan.id)" (delete)="deletePlan(plan.id)">
         </app-plan-item>
     </div>
 </div>
