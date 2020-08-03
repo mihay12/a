@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import { Plan } from '../plan.interface';
 
@@ -27,4 +27,12 @@ export class PlanService {
     return this.http.get<Plan[]>(`${this.url}${id}/clone/`).pipe(
       map(response => response)).toPromise();
   }
+
+  // public updatePlanRequest(plan: Plan): Promise<Plan[]> { 
+  //   const httpOptions = {
+  //     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+  //   };
+  //   return this.http.put<Plan[]>(`${this.url}${plan.id, plan, httpOptions}/`).pipe(
+  //     map(response => response)).toPromise();
+  //   }
 }

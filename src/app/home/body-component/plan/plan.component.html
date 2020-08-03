@@ -1,5 +1,5 @@
 <div>
-    <h1 align="center">Плани магазинів</h1>
+    <h1>Плани магазинів</h1>
     <div>
         <input [(ngModel)]="searchText" placeholder="Пошук планів" class="input-search">
     </div>
@@ -15,7 +15,7 @@
     </div>
     <div class="item-container">
         <app-plan-item *ngFor="let plan of plans | filter: searchText | sort: {property: column, direction: direction}"
-            [plan]="plan" (copy)="copyPlan(plan.id)" (delete)="deletePlan(plan.id)">
+            [plan]="plan" (copy)="copyPlan(plan.id)" (delete)="deletePlan(plan.id)" (handler)="editPlan(plan.id)">
         </app-plan-item>
     </div>
 </div>
