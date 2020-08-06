@@ -16,7 +16,6 @@ import { PlanComponent } from './home/body-component/plan/plan.component';
 import { FilterPipe } from './home/body-component/plan/pipe/filter.pipe';
 import { SortPipe } from './home/body-component/plan/pipe/sort.pipe';
 import { PlanItemComponent } from './home/body-component/plan/plan-item/plan-item.component';
-import { ModalWindowModule } from './modal-window/modal-window.module';
 
 @NgModule({
   declarations: [
@@ -38,7 +37,6 @@ import { ModalWindowModule } from './modal-window/modal-window.module';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ModalWindowModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

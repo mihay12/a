@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Plan } from '../plan.interface';
-import { ModalWindowService } from '/project/angular-task-selo/src/app/modal-window/modal-window.service';
+declare const $: any;
 
 @Component({
   selector: 'app-plan-item',
@@ -13,22 +13,25 @@ export class PlanItemComponent implements OnInit {
   @Input() plan : Plan;
   @Output() copy = new EventEmitter();
   @Output() delete = new EventEmitter();
+  @Output() update = new EventEmitter();
 
   changeItem: boolean;  
+  classModal: boolean;
 
-  constructor(public modalService: ModalWindowService ) { 
+  constructor() { 
     this.changeItem = false;
+    this.classModal = false;
   }
 
   ngOnInit(): void {
   }
 
-  openModal(id: string) {
-    this.modalService.open(id);
+  openModal() {
+    this.classModal = true;
   }
 
-  closeModal(id: string) {
-    this.modalService.close(id);
+  closeModal() {
+    this.classModal = false;
   }
 
 }

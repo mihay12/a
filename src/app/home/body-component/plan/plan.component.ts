@@ -32,6 +32,10 @@ export class PlanComponent implements OnInit {
     return await this.shopPlans.copyPlanRequest(planId);
   }
 
+  async updatePlan(planId: number, planValue: Plan[]){
+    return await this.shopPlans.updatePlanRequest(planId, planValue);
+  }
+
   sort(property) {
     this.isDesc = !this.isDesc; 
     this.column = property;

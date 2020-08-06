@@ -9,7 +9,7 @@ import { Plan } from '../plan.interface';
 
 export class PlanService {
 
-  url = 'http://app2.test.planohero.com/api/layout/planograms/'
+  url = 'http://app3.test.planohero.com/api/layout/planograms/'
 
   constructor(private http: HttpClient) { }
   
@@ -25,6 +25,11 @@ export class PlanService {
 
   public copyPlanRequest(id: number): Promise<Plan[]> { 
     return this.http.get<Plan[]>(`${this.url}${id}/clone/`).pipe(
+      map(response => response)).toPromise();
+  }
+
+  public updatePlanRequest(id: number, planValue: Plan[]): Promise<Plan[]> { 
+    return this.http.put<Plan[]>(`${this.url}${id}/`, planValue).pipe(
       map(response => response)).toPromise();
   }
 }
