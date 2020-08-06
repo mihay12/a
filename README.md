@@ -1,5 +1,7 @@
 # Task1
 
+# comand install custom modal `npm install angular-custom-modal` 
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.
 
 ## Development server

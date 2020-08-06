@@ -10,6 +10,7 @@
         <div class="top-icons">
             <span class="icon icon-copy" (click)="copy.emit(plan.id)" title="Копіювати план"></span>
             <span class="icon icon-edit" (click)="openModal()" title="Налаштування план"></span>
+
             <span class="icon icon-delete" (click)="delete.emit(plan.id)"  title="Видалити план"></span>
         </div>
         <div class="center-buttons">
@@ -24,7 +25,6 @@
         </div>
     </div>
 </div>
-
 <div [ngClass]="{'modal': classModal}" *ngIf="classModal">
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span>
