@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { MatDialogModule } from '@angular/material/dialog';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,8 +16,6 @@ import { PlanComponent } from './home/body-component/plan/plan.component';
 import { FilterPipe } from './home/body-component/plan/pipe/filter.pipe';
 import { SortPipe } from './home/body-component/plan/pipe/sort.pipe';
 import { PlanItemComponent } from './home/body-component/plan/plan-item/plan-item.component';
-import { DialogWindowComponent } from './home/body-component/plan/plan-item/dialog-window/dialog-window.component';
-import { ModalModule } from '/home/mykhailo/projects/taskAngular/node_modules/angular-custom-modal';
 
 @NgModule({
   declarations: [
@@ -33,9 +30,6 @@ import { ModalModule } from '/home/mykhailo/projects/taskAngular/node_modules/an
     SortPipe,
     PlanItemComponent
   ],
-  entryComponents: [
-    DialogWindowComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -43,8 +37,6 @@ import { ModalModule } from '/home/mykhailo/projects/taskAngular/node_modules/an
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatDialogModule,
-    ModalModule,
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,

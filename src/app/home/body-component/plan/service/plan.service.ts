@@ -9,7 +9,7 @@ import { Plan } from '../plan.interface';
 
 export class PlanService {
 
-  url = 'http://app2.test.planohero.com/api/layout/planograms/'
+  url = 'http://app3.test.planohero.com/api/layout/planograms/'
 
   constructor(private http: HttpClient) { }
   
@@ -28,11 +28,8 @@ export class PlanService {
       map(response => response)).toPromise();
   }
 
-  // public updatePlanRequest(plan: Plan): Promise<Plan[]> { 
-  //   const httpOptions = {
-  //     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
-  //   };
-  //   return this.http.put<Plan[]>(`${this.url}${plan.id, plan, httpOptions}/`).pipe(
-  //     map(response => response)).toPromise();
-  //   }
+  public updatePlanRequest(id: number, planValue: Plan[]): Promise<Plan[]> { 
+    return this.http.put<Plan[]>(`${this.url}${id}/`, planValue).pipe(
+      map(response => response)).toPromise();
+  }
 }
