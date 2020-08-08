@@ -1,6 +1,5 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, ViewChild, EventEmitter} from '@angular/core';
 import { Plan } from '../plan.interface';
-declare const $: any;
 
 @Component({
   selector: 'app-plan-item',
@@ -10,7 +9,7 @@ declare const $: any;
 
 export class PlanItemComponent implements OnInit {
 
-  @Input() plan : Plan;
+  @Input() plan: Plan;
   @Output() copy = new EventEmitter();
   @Output() delete = new EventEmitter();
   @Output() update = new EventEmitter();

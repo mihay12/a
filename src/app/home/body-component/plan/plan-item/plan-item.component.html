@@ -10,6 +10,7 @@
         <div class="top-icons">
             <span class="icon icon-copy" (click)="copy.emit(plan.id)" title="Копіювати план"></span>
             <span class="icon icon-edit" (click)="openModal()" title="Налаштування план"></span>
+
             <span class="icon icon-delete" (click)="delete.emit(plan.id)"  title="Видалити план"></span>
         </div>
         <div class="center-buttons">
@@ -24,15 +25,14 @@
         </div>
     </div>
 </div>
-
 <div [ngClass]="{'modal': classModal}" *ngIf="classModal">
     <div class="modal-content">
       <span class="close" (click)="closeModal()">&times;</span>
       <form (ngSubmit)="update.emit(plan.id, plan)">
         <h1>Налаштування плану</h1>
-        <input type="text" name="name" [(ngModel)]="plan.name" ngModel placeholder="Введіть логін"> 
-        <input type="text" name="trade_area" [(ngModel)]="plan.trade_area"  ngModel placeholder="Введіть пароль">
-        <button (click)="closeModal()">Зберегти</button>
+        <input type="text" name="name" [(ngModel)]="plan.name" ngModel placeholder="Введіть назву плану"> 
+        <input type="text" name="trade_area" [(ngModel)]="plan.trade_area"  ngModel placeholder="Введіть площу торгового залу">
+        <button>Зберегти</button>
     </form>
     </div>
   </div>

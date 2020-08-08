@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&display=swap');
 
-:root {
+:root{
     font-family: 'Inter', sans-serif;
 }
 
 body { 
-    max-width: 980px;
-    margin: auto;
+    max-width: 980px !important;
+    margin: auto !important;
 }
