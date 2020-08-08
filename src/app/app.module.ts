@@ -16,6 +16,7 @@ import { PlanComponent } from './home/body-component/plan/plan.component';
 import { FilterPipe } from './home/body-component/plan/pipe/filter.pipe';
 import { SortPipe } from './home/body-component/plan/pipe/sort.pipe';
 import { PlanItemComponent } from './home/body-component/plan/plan-item/plan-item.component';
+import { PlanEditComponent } from './home/body-component/plan/plan-edit/plan-edit.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { PlanItemComponent } from './home/body-component/plan/plan-item/plan-ite
     PlanComponent,
     FilterPipe,
     SortPipe,
-    PlanItemComponent
+    PlanItemComponent,
+    PlanEditComponent
   ],
   imports: [
     BrowserModule,

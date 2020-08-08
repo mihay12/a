@@ -1,7 +1,11 @@
 div{
     color: white;
-    padding: 5px 0 5px 0;
+    padding: 20px 0 20px 0;
     background-color: black;
+    width: 100%;
+    position: absolute;
+    right: 0;
+    top: 0;
 }
 
 div div span {

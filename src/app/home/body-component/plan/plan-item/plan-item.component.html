@@ -19,8 +19,8 @@
                 <a class="link-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" target="_blank">Переглянути</a>
             </div>
             <div>
-                <a class="icon icon-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + plan.id" target="_blank"></a>
-                <a class="link-edit-plan" [href]="'http://app2.test.planohero.com/planogram/edit/' + plan.id" target="_blank">Редагувати</a>
+                <a class="icon icon-edit-plan" [routerLink]="['/plan-edit']"></a>
+                <a class="link-edit-plan" [routerLink]="['/plan-edit']">Редагувати</a>
             </div>
         </div>
     </div>

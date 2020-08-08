@@ -17,7 +17,7 @@ export class PlanComponent implements OnInit {
   direction: number;
   isDesc: boolean;
   column: string;
-
+  
   constructor(private shopPlans: PlanService) { } 
   
   async ngOnInit(): Promise<void> {
@@ -29,12 +29,14 @@ export class PlanComponent implements OnInit {
   }
 
   async copyPlan(planId: number) {
-    return await this.shopPlans.copyPlanRequest(planId);
+    return this.plans.unshift(await this.shopPlans.copyPlanRequest(planId));
   }
 
-  async updatePlan(planId: number, planValue: Plan[]){
+  async updatePlan(planId: number, planValue: Plan){
     return await this.shopPlans.updatePlanRequest(planId, planValue);
   }
+
+
 
   sort(property) {
     this.isDesc = !this.isDesc; 

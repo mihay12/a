@@ -7,6 +7,7 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/guard/auth.guard';
 import { HomeGuard } from './auth/guard/home.guard';
+import { PlanEditComponent } from './home/body-component/plan/plan-edit/plan-edit.component';
 
 const routes: Routes = [
   {
@@ -34,6 +35,10 @@ const routes: Routes = [
         path: 'third-link',
         component: ThirdLinkComponent,
       },
+      {
+        path: 'plan-edit',
+        component: PlanEditComponent,
+      }
     ],
     canActivate: [HomeGuard],
     canLoad: [HomeGuard]
