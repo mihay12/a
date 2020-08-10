@@ -25,7 +25,8 @@ export class PlanComponent implements OnInit {
   }
   
   async deletePlan(planId: number) {
-    return await this.shopPlans.deletePlanRequest(planId);
+    await this.shopPlans.deletePlanRequest(planId);
+    return this.plans = this.plans.filter(plan => plan.id !== planId);
   }
 
   async copyPlan(planId: number) {
@@ -35,8 +36,6 @@ export class PlanComponent implements OnInit {
   async updatePlan(planId: number, planValue: Plan){
     return await this.shopPlans.updatePlanRequest(planId, planValue);
   }
-
-
 
   sort(property) {
     this.isDesc = !this.isDesc; 
