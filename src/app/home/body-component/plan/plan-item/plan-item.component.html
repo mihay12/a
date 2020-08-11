@@ -1,38 +1,76 @@
-<div class="plan-item-container" (mouseover)="changeItem=true" (mouseleave)="changeItem=false">
-    <div class="plan-image" [ngStyle]="{'background-image': 'url(' + plan.image + ')'}"></div>
+<div class="plan-item-container" 
+    (mouseover)="changeItem=true" 
+    (mouseleave)="changeItem=false"
+>
+    <div class="plan-image" 
+        [ngStyle]="{'background-image': 'url(' + plan.image + ')'}"
+    ></div>
     <div class="plan-panel">
         <div class="plan-name">
             <b>{{plan.name}}</b>
         </div>
         <div>Останнє оновлення: {{plan.update_date.substring(0,10)}}</div>
     </div>
-    <div class="hover-panel" *ngIf="changeItem">
+    <div class="hover-panel" 
+        *ngIf="changeItem"
+    >
         <div class="top-icons">
-            <span class="icon icon-copy" (click)="copy.emit(plan.id)" title="Копіювати план"></span>
-            <span class="icon icon-edit" (click)="openModal()" title="Налаштування план"></span>
-
-            <span class="icon icon-delete" (click)="delete.emit(plan.id)"  title="Видалити план"></span>
+            <span class="icon icon-copy" 
+                (click)="copy.emit(plan.id)" 
+                title="Копіювати план"
+            ></span>
+            <span class="icon icon-edit" 
+                (click)="openModal()" 
+                title="Налаштування план"
+            ></span>
+            <span class="icon icon-delete" 
+                (click)="delete.emit(plan.id)"  
+                title="Видалити план"
+            ></span>
         </div>
         <div class="center-buttons">
             <div>
-                <a class="icon-view icon-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" target="_blank"></a>
-                <a class="link-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" target="_blank">Переглянути</a>
+                <a class="icon-view icon-view-plan" 
+                    [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" 
+                    target="_blank"
+                ></a>
+                <a class="link-view-plan" 
+                    [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" 
+                    target="_blank"
+                >Переглянути</a>
             </div>
             <div>
-                <a class="icon icon-edit-plan" [routerLink]="['/plan-edit']"></a>
-                <a class="link-edit-plan" [routerLink]="['/plan-edit']">Редагувати</a>
+                <a class="icon icon-edit-plan" 
+                    [routerLink]="['/plan-edit']"
+                ></a>
+                <a class="link-edit-plan" 
+                    [routerLink]="['/plan-edit']"
+                >Редагувати</a>
             </div>
         </div>
     </div>
 </div>
-<div [ngClass]="{'modal': classModal}" *ngIf="classModal">
+
+<div [ngClass]="{'modal': classModal}" 
+    *ngIf="classModal"
+>
     <div class="modal-content">
-      <span class="close" (click)="closeModal()">&times;</span>
-      <form (ngSubmit)="update.emit(plan.id, plan)">
-        <h1>Налаштування плану</h1>
-        <input type="text" name="name" [(ngModel)]="plan.name" ngModel placeholder="Введіть назву плану"> 
-        <input type="text" name="trade_area" [(ngModel)]="plan.trade_area"  ngModel placeholder="Введіть площу торгового залу">
-        <button>Зберегти</button>
-    </form>
+        <span class="close" 
+            (click)="closeModal()"
+        >&times;</span>
+        <form (ngSubmit)="update.emit(plan.id, plan)">
+            <h1>Налаштування плану</h1>
+            <input type="text" 
+                name="name" 
+                [(ngModel)]="plan.name" 
+                placeholder="Введіть назву плану"
+            > 
+            <input type="text" 
+                name="trade_area" 
+                [(ngModel)]="plan.trade_area" 
+                placeholder="Введіть площу торгового залу"
+            >
+            <button>Зберегти</button>
+        </form>
     </div>
-  </div>
+</div>

@@ -1,21 +1,33 @@
 <div>
     <h1>Плани магазинів</h1>
     <div>
-        <input [(ngModel)]="searchText" placeholder="Пошук планів" class="input-search">
+        <input [(ngModel)]="searchText" 
+            placeholder="Пошук планів" 
+            class="input-search"
+        >
     </div>
     <div class="block-with-sorting">
-        <p (click)="sort('name')" class="type"
+        <p (click)="sort('name')" 
+            class="type"
             [ngClass]="{'type-sort': column !== 'name','type-sort-asc': (column === 'name' && !isDesc),  'type-sort-desc': (column === 'name' && isDesc) }"
-            aria-hidden="true">Сортування по назві плану
+            aria-hidden="true"
+            >Сортування по назві плану
         </p>
-        <p (click)="sort('update_date')" class="type"
+        <p (click)="sort('update_date')" 
+            class="type"
             [ngClass]="{'type-sort': column !== 'update_date','type-sort-asc': (column === 'update_date' && !isDesc),  'type-sort-desc': (column === 'update_date' && isDesc) }"
-            aria-hidden="true">Сортування по даті останньої зміни
+            aria-hidden="true"
+            >Сортування по даті останньої зміни
         </p>
     </div>
     <div class="item-container">
-        <app-plan-item *ngFor="let plan of plans | filter: searchText | sort: {property: column, direction: direction}"
-            [plan]="plan" (copy)="copyPlan(plan.id)" (delete)="deletePlan(plan.id)" (update)="updatePlan(plan.id, plan)">
+        <app-plan-item 
+            *ngFor="let plan of plans | filter: searchText | sort: {property: column, direction: direction}"
+            [plan]="plan" 
+            (copy)="copyPlan(plan.id)" 
+            (delete)="deletePlan(plan.id)" 
+            (update)="updatePlan(plan.id, plan)"
+        >
         </app-plan-item>
     </div>
 </div>

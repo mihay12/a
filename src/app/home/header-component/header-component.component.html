@@ -6,9 +6,15 @@
     </div>
     <div *ngIf="authService.loggedIn()">
         <div class="buttons">
-            <span [routerLink]="['home/plan']" [routerLinkActive]="['active']">Плани</span>
-            <span [routerLink]="['home/second-link']" [routerLinkActive]="['active']">Link 2</span>
-            <span [routerLink]="['home/third-link']" [routerLinkActive]="['active']">Link 3</span>
+            <span [routerLink]="['home/plan']" 
+                [routerLinkActive]="['active']"
+            >Плани</span>
+            <span [routerLink]="['home/second-link']" 
+                [routerLinkActive]="['active']"
+            >Link 2</span>
+            <span [routerLink]="['home/third-link']" 
+                [routerLinkActive]="['active']"
+            >Link 3</span>
             <span (click)='exit()'>Вихід</span>
         </div>
     </div>
