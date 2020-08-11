@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, ViewChild, EventEmitter} from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Plan } from '../plan.interface';
 
 @Component({
@@ -32,5 +32,17 @@ export class PlanItemComponent implements OnInit {
   closeModal() {
     this.classModal = false;
   }
+
+  copyEmit(planId) {
+    return this.copy.emit(planId);
+  }
+
+  deleteEmit(planId) {
+    return this.delete.emit(planId);
+  }
+
+  // updateEmit(planId, plan) {
+  //   return this.update.emit(planId, plan);
+  // }
 
 }
