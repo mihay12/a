@@ -4,4 +4,5 @@ div {
 
 canvas {
     border: 2px solid black;
+    cursor: crosshair;
 }

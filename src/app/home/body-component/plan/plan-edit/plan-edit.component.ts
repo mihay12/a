@@ -9,6 +9,7 @@ import { switchMap, takeUntil, pairwise} from 'rxjs/operators';
 })
 export class PlanEditComponent implements AfterViewInit {
 
+
   @ViewChild('canvas') public canvas: ElementRef;
 
   @Input() public width = 1000;
@@ -76,17 +77,13 @@ export class PlanEditComponent implements AfterViewInit {
       this.ctx.lineTo(currentPos.x, currentPos.y)
       this.ctx.stroke();
     }
-    // if (canvasElement.ctrlKey) {
-    //   this.ctx.moveTo(prevPos.x, prevPos.y);
-    //   const dx = canvasElement.offsetX - prevPos.x;
-    //   const dy = canvasElement.offsetY - prevPos.y;
-    //   if (dx > dy) {
-    //     this.ctx.lineTo(canvasElement.offsetX, prevPos.y);
-    //     this.ctx.stroke();
-    //   } else {
-    //     this.ctx.lineTo(prevPos.x, canvasElement.offsetY);
-    //     this.ctx.stroke();
-    //   }
-    // }
   }
+
+  
+  clear() {
+    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+    this.ctx = canvasEl.getContext('2d');
+    this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+  }
+  
 }

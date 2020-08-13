@@ -34,15 +34,16 @@ export class PlanItemComponent implements OnInit {
   }
 
   copyEmit(planId) {
-    return this.copy.emit(planId);
+    this.copy.emit(planId);
   }
 
   deleteEmit(planId) {
-    return this.delete.emit(planId);
+   this.delete.emit(planId);
   }
 
-  // updateEmit(planId, plan) {
-  //   return this.update.emit(planId, plan);
-  // }
+  updateEmit(planId) {
+    this.classModal = false;  
+    this.update.emit(planId);
+  }
 
 }

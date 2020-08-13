@@ -22,7 +22,8 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent, children: [
+    component: HomeComponent, 
+    children: [
       {
         path: 'plan',
         component: PlanComponent,
@@ -36,7 +37,7 @@ const routes: Routes = [
         component: ThirdLinkComponent,
       },
       {
-        path: 'plan-edit',
+        path: 'plan-edit/:id',
         component: PlanEditComponent,
       }
     ],
