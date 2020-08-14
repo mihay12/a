@@ -14,7 +14,8 @@ export class PlanEditComponent implements AfterViewInit {
 
   @Input() public width = 1000;
   @Input() public height = 500;
-
+  @Input() public coordinatesUp;
+  @Input() public coordinatesDown;
   public ctx: CanvasRenderingContext2D; 
 
   constructor() { }
@@ -45,36 +46,38 @@ export class PlanEditComponent implements AfterViewInit {
             )
         })
       )
-      .subscribe((res: [MouseEvent, MouseEvent]) => {
+      .subscribe((result: [MouseEvent, MouseEvent]) => {
         const rect = canvasElement.getBoundingClientRect();
 
-        const prevPos = {
-          x: res[0].clientX - rect.left,
-          y: res[0].clientY - rect.top
+         this.coordinatesDown = {
+          x: result[0].clientX - rect.left,
+          y: result[0].clientY - rect.top
         };
 
-        const currentPos = {
-          x: res[1].clientX - rect.left,
-          y: res[1].clientY - rect.top
-        };
-
-        this.drawOnCanvas(prevPos, currentPos, canvasElement);
+        this.coordinatesUp;
+        this.drawOnCanvas();
       });
-  } 
+  
+      fromEvent(canvasElement, 'mouseup').subscribe((result: MouseEvent) => {
+        const rect = canvasElement.getBoundingClientRect();
 
-  private drawOnCanvas(
-    prevPos: { x: number, y: number },
-    currentPos: { x: number, y: number },
-    canvasElement
-  ) {
+        this.coordinatesUp = {
+          x: result.clientX - rect.left,
+          y: result.clientY - rect.top
+        };
+        this.drawOnCanvas();
+      });
+      
+    }
+
+  private drawOnCanvas() {
 
     if (!this.ctx) return;
-
+    
     this.ctx.beginPath();
-
-    if (prevPos) {
-      this.ctx.moveTo(prevPos.x, prevPos.y);
-      this.ctx.lineTo(currentPos.x, currentPos.y)
+    if (this.coordinatesDown) {
+      this.ctx.moveTo(this.coordinatesDown.x, this.coordinatesDown.y);
+      this.ctx.lineTo(this.coordinatesUp.x, this.coordinatesUp.y)
       this.ctx.stroke();
     }
   }
