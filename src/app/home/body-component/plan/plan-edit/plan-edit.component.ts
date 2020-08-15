@@ -14,8 +14,7 @@ export class PlanEditComponent implements AfterViewInit {
   height:number = 500;
   coordinatesUp;
   coordinatesDown;
-  isDown: boolean = true;
-  public ctx: CanvasRenderingContext2D; 
+  ctx: CanvasRenderingContext2D; 
 
   constructor() { }
 
@@ -36,7 +35,6 @@ export class PlanEditComponent implements AfterViewInit {
   private captureEvents(canvasElement: HTMLCanvasElement) {
     fromEvent(canvasElement, 'mousedown')
       .subscribe((result: MouseEvent) => {
-        this.isDown = true;
         const rect = canvasElement.getBoundingClientRect();
         this.coordinatesDown = {
           x: result.clientX - rect.left,
@@ -45,7 +43,6 @@ export class PlanEditComponent implements AfterViewInit {
     });
 
     fromEvent(canvasElement, 'mousemove').subscribe((result: MouseEvent) => {
-        if (!this.isDown) return;
         const rect = canvasElement.getBoundingClientRect();
         this.coordinatesUp = {
           x: result.clientX - rect.left,
@@ -54,7 +51,6 @@ export class PlanEditComponent implements AfterViewInit {
     });
 
     fromEvent(canvasElement, 'mouseup').subscribe(() => {
-        this.isDown = false;
         this.drawOnCanvas();
     });
    }
