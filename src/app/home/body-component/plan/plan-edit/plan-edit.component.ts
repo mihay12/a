@@ -1,6 +1,5 @@
 import { Component, AfterViewInit, Input, ElementRef, ViewChild} from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { switchMap, takeUntil, pairwise} from 'rxjs/operators';
 
 @Component({
   selector: 'app-plan-edit',
@@ -9,13 +8,13 @@ import { switchMap, takeUntil, pairwise} from 'rxjs/operators';
 })
 export class PlanEditComponent implements AfterViewInit {
 
-
   @ViewChild('canvas') public canvas: ElementRef;
 
-  @Input() public width = 1000;
-  @Input() public height = 500;
-  @Input() public coordinatesUp;
-  @Input() public coordinatesDown;
+  width:number = 1000;
+  height:number = 500;
+  coordinatesUp;
+  coordinatesDown;
+  isDown: boolean = true;
   public ctx: CanvasRenderingContext2D; 
 
   constructor() { }
@@ -36,44 +35,33 @@ export class PlanEditComponent implements AfterViewInit {
 
   private captureEvents(canvasElement: HTMLCanvasElement) {
     fromEvent(canvasElement, 'mousedown')
-      .pipe(
-        switchMap(e => {
-          return fromEvent( canvasElement, 'mousemove')
-            .pipe(
-              takeUntil(fromEvent(canvasElement, 'mouseup')),
-              takeUntil(fromEvent(canvasElement, 'mouseleave')),
-              pairwise()
-            )
-        })
-      )
-      .subscribe((result: [MouseEvent, MouseEvent]) => {
+      .subscribe((result: MouseEvent) => {
+        this.isDown = true;
         const rect = canvasElement.getBoundingClientRect();
-
-         this.coordinatesDown = {
-          x: result[0].clientX - rect.left,
-          y: result[0].clientY - rect.top
+        this.coordinatesDown = {
+          x: result.clientX - rect.left,
+          y: result.clientY - rect.top
         };
+    });
 
-        this.coordinatesUp;
-        this.drawOnCanvas();
-      });
-  
-      fromEvent(canvasElement, 'mouseup').subscribe((result: MouseEvent) => {
+    fromEvent(canvasElement, 'mousemove').subscribe((result: MouseEvent) => {
+        if (!this.isDown) return;
         const rect = canvasElement.getBoundingClientRect();
-
         this.coordinatesUp = {
           x: result.clientX - rect.left,
           y: result.clientY - rect.top
         };
+    });
+
+    fromEvent(canvasElement, 'mouseup').subscribe(() => {
+        this.isDown = false;
         this.drawOnCanvas();
-      });
-      
-    }
+    });
+   }
 
   private drawOnCanvas() {
-
     if (!this.ctx) return;
-    
+
     this.ctx.beginPath();
     if (this.coordinatesDown) {
       this.ctx.moveTo(this.coordinatesDown.x, this.coordinatesDown.y);
@@ -82,11 +70,9 @@ export class PlanEditComponent implements AfterViewInit {
     }
   }
 
-  
   clear() {
     const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
     this.ctx = canvasEl.getContext('2d');
     this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
   }
-  
 }
