@@ -42,15 +42,16 @@ export class PlanEditComponent implements AfterViewInit {
         };
     });
 
-    fromEvent(canvasElement, 'mousemove').subscribe((result: MouseEvent) => {
-        const rect = canvasElement.getBoundingClientRect();
+    fromEvent(canvasElement, 'mousemove').subscribe(() => {
+        this.drawOnCanvas();
+    });
+
+    fromEvent(canvasElement, 'mouseup').subscribe((result: MouseEvent) => {
+      const rect = canvasElement.getBoundingClientRect();
         this.coordinatesUp = {
           x: result.clientX - rect.left,
           y: result.clientY - rect.top
         };
-    });
-
-    fromEvent(canvasElement, 'mouseup').subscribe(() => {
         this.drawOnCanvas();
     });
    }

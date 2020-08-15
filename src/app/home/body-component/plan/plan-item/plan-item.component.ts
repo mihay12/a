@@ -25,14 +25,6 @@ export class PlanItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  openModal() {
-    this.classModal = true;
-  }
-
-  closeModal() {
-    this.classModal = false;
-  }
-
   copyEmit(planId) {
     this.copy.emit(planId);
   }
@@ -45,5 +37,7 @@ export class PlanItemComponent implements OnInit {
     this.classModal = false;  
     this.update.emit(planId);
   }
-
+  openModal() {
+    this.classModal = true;
+  }
 }

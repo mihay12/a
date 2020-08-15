@@ -1,7 +1,5 @@
 <div class="plan-item-container">
-    <div class="plan-image" 
-        [ngStyle]="{'background-image': 'url(' + plan.image + ')'}"
-    ></div>
+    <div class="plan-image" [ngStyle]="{'background-image': 'url(' + plan.image + ')'}"></div>
     <div class="plan-panel">
         <div class="plan-name">
             <b>{{plan.name}}</b>
@@ -10,62 +8,38 @@
     </div>
     <div class="hover-panel">
         <div class="top-icons">
-            <span class="icon icon-copy" 
-                (click)="copyEmit(plan.id)" 
-                title="Копіювати план"
-            ></span>
-            <span class="icon icon-edit" 
-                (click)="openModal()" 
-                title="Налаштування план"
-            ></span>
-            <span class="icon icon-delete" 
-                (click)="deleteEmit(plan.id)"  
-                title="Видалити план"
-            ></span>
+            <span class="icon icon-copy" (click)="copyEmit(plan.id)" title="Копіювати план"></span>
+            <span class="icon icon-edit" (click)="openModal()" title="Налаштування план"></span>
+            <span class="icon icon-delete" (click)="deleteEmit(plan.id)" title="Видалити план"></span>
         </div>
         <div class="center-buttons">
             <div>
-                <a class="icon-view icon-view-plan" 
-                    [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" 
-                    target="_blank"
-                ></a>
-                <a class="link-view-plan" 
-                    [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id" 
-                    target="_blank"
-                >Переглянути</a>
+                <a class="icon-view icon-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id"
+                    target="_blank"></a>
+                <a class="link-view-plan" [href]="'http://app2.test.planohero.com/planogram/view/' + plan.id"
+                    target="_blank">Переглянути</a>
             </div>
             <div>
-                <a class="icon icon-edit-plan" 
-                    [routerLink]="['../plan-edit/' + plan.id]"
-                ></a>
-                <a class="link-edit-plan" 
-                    [routerLink]="['../plan-edit' + plan.id]"
-                >Редагувати</a>
+                <a class="icon icon-edit-plan" [routerLink]="['../plan-edit/' + plan.id]"></a>
+                <a class="link-edit-plan" [routerLink]="['../plan-edit' + plan.id]">Редагувати</a>
             </div>
         </div>
     </div>
 </div>
 
-<div [ngClass]="{'modal': classModal}" 
-    *ngIf="classModal"
->
-    <div class="modal-content">
-        <span class="close" 
-            (click)="closeModal()"
-        >&times;</span>
-        <form (ngSubmit)="updateEmit(plan.id, plan)">
-            <h1>Налаштування плану</h1>
-            <input type="text" 
-                name="name" 
-                [(ngModel)]="plan.name" 
-                placeholder="Введіть назву плану"
-            > 
-            <input type="text" 
-                name="trade_area" 
-                [(ngModel)]="plan.trade_area" 
-                placeholder="Введіть площу торгового залу"
-            >
-            <button>Зберегти</button>
-        </form>
-    </div>
-</div>
+<modal>
+    <form (ngSubmit)="updateEmit(plan.id)">
+        <h1>Налаштування плану</h1>
+        <input type="text" 
+            name="name" 
+            [(ngModel)]="plan.name" 
+            placeholder="Введіть назву плану"
+        >
+        <input type="text" 
+            name="trade_area" 
+            [(ngModel)]="plan.trade_area" 
+            placeholder="Введіть площу торгового залу"
+        >
+        <button>Зберегти</button>
+    </form>
+</modal>
