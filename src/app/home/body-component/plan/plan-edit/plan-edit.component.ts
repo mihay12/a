@@ -65,6 +65,7 @@ export class PlanEditComponent implements AfterViewInit {
       this.ctx.lineTo(this.coordinatesUp.x, this.coordinatesUp.y)
       this.ctx.stroke();
     }
+    this.ctx.closePath();
   }
 
   clear() {

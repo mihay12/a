@@ -1,5 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 import { Plan } from '../plan.interface';
+import { ModalService } from 'src/app/modal/service/modal.service';
 
 @Component({
   selector: 'app-plan-item',
@@ -15,11 +16,11 @@ export class PlanItemComponent implements OnInit {
   @Output() update = new EventEmitter();
 
   changeItem: boolean;  
-  classModal: boolean;
+  value:boolean;
 
-  constructor() { 
+  constructor(private modalService: ModalService) { 
     this.changeItem = false;
-    this.classModal = false;
+    this.value = true;
   }
 
   ngOnInit(): void {
@@ -33,11 +34,14 @@ export class PlanItemComponent implements OnInit {
    this.delete.emit(planId);
   }
 
+  get closeModal() {
+    return this.modalService.classModal;  
+  }
+
   updateEmit(planId) {
-    this.classModal = false;  
     this.update.emit(planId);
   }
-  openModal() {
-    this.classModal = true;
+  set openModal(value) {
+    this.modalService.classModal = value;
   }
 }

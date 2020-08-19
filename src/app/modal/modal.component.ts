@@ -8,20 +8,19 @@ import { ModalService } from './service/modal.service';
 })
 export class ModalComponent implements OnInit {
 
-  classModal: boolean;
-
+  classModal:boolean;
+  
   constructor(private modalService: ModalService) {
-    this.classModal = false;
   }
 
   ngOnInit(): void { }
 
-  openModal() {
-    this.classModal = true;
+  get openModal() { 
+    return this.classModal = this.modalService.classModal;
   }
 
-  closeModal() {
-    this.classModal = false;
+  set closeModal(value) {
+    this.modalService.classModal = false;
   }
 
 }

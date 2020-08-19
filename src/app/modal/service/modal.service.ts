@@ -5,5 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class ModalService {
 
-
+  classModal: boolean;
+  clic() {
+  return console.log(this.classModal);
+  }
 }
