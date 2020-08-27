@@ -1,12 +1,18 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ModalService {
 
-  classModal: boolean;
-  clic() {
-  return console.log(this.classModal);
+
+  private stanModal = new BehaviorSubject(false);
+  currentStanModal = this.stanModal.asObservable();
+
+  constructor() {}
+
+  changeStanModal(stan: boolean) {
+    this.stanModal.next(stan);
   }
 }

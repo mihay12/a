@@ -16,14 +16,14 @@ export class PlanItemComponent implements OnInit {
   @Output() update = new EventEmitter();
 
   changeItem: boolean;  
-  value:boolean;
+  stan: boolean;
 
   constructor(private modalService: ModalService) { 
     this.changeItem = false;
-    this.value = true;
   }
 
   ngOnInit(): void {
+    this.modalService.currentStanModal.subscribe(stan => this.stan = stan);
   }
 
   copyEmit(planId) {
@@ -34,14 +34,16 @@ export class PlanItemComponent implements OnInit {
    this.delete.emit(planId);
   }
 
-  get closeModal() {
-    return this.modalService.classModal;  
+  closeModal() {
+    this.modalService.changeStanModal(false);
   }
 
   updateEmit(planId) {
+    this.modalService.changeStanModal(false);
     this.update.emit(planId);
   }
-  set openModal(value) {
-    this.modalService.classModal = value;
+  
+  openModal() {
+    this.modalService.changeStanModal(true);
   }
 }

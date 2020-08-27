@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, Input, ElementRef } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ModalService } from './service/modal.service';
 
 @Component({
@@ -8,19 +8,15 @@ import { ModalService } from './service/modal.service';
 })
 export class ModalComponent implements OnInit {
 
-  classModal:boolean;
+  stan: boolean;
   
   constructor(private modalService: ModalService) {
   }
 
-  ngOnInit(): void { }
-
-  get openModal() { 
-    return this.classModal = this.modalService.classModal;
+  ngOnInit(): void { 
+    this.modalService.currentStanModal.subscribe(stan => this.stan = stan);
   }
-
-  set closeModal(value) {
-    this.modalService.classModal = false;
+  closeModal() {
+    this.modalService.changeStanModal(false);
   }
-
 }
