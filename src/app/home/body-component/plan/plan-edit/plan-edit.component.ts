@@ -1,5 +1,8 @@
-import { Component, AfterViewInit, Input, ElementRef, ViewChild} from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 import { fromEvent } from 'rxjs';
+import { PlanService } from '../service/plan.service';
+import { PlanItem } from '../plan-item.interface';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-plan-edit',
@@ -9,15 +12,27 @@ import { fromEvent } from 'rxjs';
 export class PlanEditComponent implements AfterViewInit {
 
   @ViewChild('canvas') public canvas: ElementRef;
-
+  planId;
+  
+  planItem: PlanItem;
   width:number = 1000;
   height:number = 500;
   coordinatesUp;
   coordinatesDown;
   ctx: CanvasRenderingContext2D; 
 
-  constructor() { }
+  constructor(
+    private getPlan: PlanService,
+    private route: ActivatedRoute
+  ) {
+    this.route.snapshot.params.id
+   }
 
+  async ngOnInit(): Promise<void> {
+    this.planItem = await this.getPlan.getPlanItem(this.planId);
+    console.log(this.planItem);
+  }
+  
   ngAfterViewInit(): void {
     const canvasElement: HTMLCanvasElement = this.canvas.nativeElement;
     this.ctx = canvasElement.getContext('2d');

@@ -38,7 +38,7 @@ const routes: Routes = [
       },
       {
         path: 'plan-edit/:id',
-        component: PlanEditComponent,
+        loadChildren: "./home/body-component/plan/plan-edit/plan-edit.component#PlanEditComponent"  
       }
     ],
     canActivate: [HomeGuard],

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators';
 import { Plan } from '../plan.interface';
+import { PlanItem } from '../plan-item.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -33,8 +34,8 @@ export class PlanService {
       map(response => response)).toPromise();
   }
   
-  public getPlanItem(): Promise<Plan[]> {
-    return this.http.get<Plan[]>(this.url).pipe(
+  public getPlanItem(id: number): Promise<PlanItem> {
+    return this.http.get<PlanItem>(`${this.url}${id}/`).pipe(
       map(response => response)).toPromise();
   }
 }

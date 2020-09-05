@@ -21,13 +21,13 @@
             </div>
             <div>
                 <a class="icon icon-edit-plan" [routerLink]="['../plan-edit/' + plan.id]"></a>
-                <a class="link-edit-plan" [routerLink]="['../plan-edit' + plan.id]">Редагувати</a>
+                <a class="link-edit-plan" [routerLink]="['../plan-edit/' + plan.id]">Редагувати</a>
             </div>
         </div>
     </div>
 </div>
 
-<modal class="modal">
+<modal>
     <form (ngSubmit)="updateEmit(plan.id)">
         <h1>Налаштування плану</h1>
         <input type="text" 
