@@ -7,7 +7,6 @@ import { AuthComponent } from './auth/auth.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './auth/guard/auth.guard';
 import { HomeGuard } from './auth/guard/home.guard';
-import { PlanEditComponent } from './home/body-component/plan/plan-edit/plan-edit.component';
 
 const routes: Routes = [
   {
@@ -26,19 +25,19 @@ const routes: Routes = [
     children: [
       {
         path: 'plan',
-        component: PlanComponent,
+        component: PlanComponent
       },
       {
         path: 'second-link',
-        component: SecondLinkComponent,
+        component: SecondLinkComponent
       },
       {
         path: 'third-link',
-        component: ThirdLinkComponent,
+        component: ThirdLinkComponent
       },
       {
         path: 'plan-edit/:id',
-        loadChildren: "./home/body-component/plan/plan-edit/plan-edit.component#PlanEditComponent"  
+        loadChildren: "./home/body-component/plan/edit-plan/edit-plan.module#EditPlanModule"  
       }
     ],
     canActivate: [HomeGuard],
