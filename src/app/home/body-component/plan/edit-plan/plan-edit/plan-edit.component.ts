@@ -1,7 +1,7 @@
 import { Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 import { fromEvent } from 'rxjs';
-import { PlanService } from '/project/angular-task-selo/src/app/home/body-component/plan/service/plan.service';
-import { PlanItem } from '/project/angular-task-selo/src/app/home/body-component/plan/plan-item.interface';
+import { PlanService } from 'src/app/home/body-component/plan/service/plan.service';
+import { PlanItem } from 'src/app/home/body-component/plan/plan-item.interface';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

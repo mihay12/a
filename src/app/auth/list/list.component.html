@@ -1,0 +1,10 @@
+<table>
+    <tr>
+        <th (click)="sort('name')"
+            [ngClass]="{'type-sort': column !== 'update_date','type-sort-asc': (column === 'update_date' && !isDesc),  'type-sort-desc': (column === 'update_date' && isDesc) }"
+        >Plan</th>
+    </tr>
+    <tr *ngFor="let plan of plans | sort: {property: column, direction: direction}">
+        <td>{{plan}}</td>
+    </tr>
+</table>
