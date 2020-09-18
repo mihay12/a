@@ -18,7 +18,6 @@ import { SortPipe } from './home/body-component/plan/pipe/sort.pipe';
 import { PlanItemComponent } from './home/body-component/plan/plan-item/plan-item.component';
 import { ModalComponent } from './modal/modal.component';
 import { EditPlanModule } from './home/body-component/plan/edit-plan/edit-plan.module';
-import { ListComponent } from './auth/list/list.component'
 
 @NgModule({
   declarations: [
@@ -32,8 +31,7 @@ import { ListComponent } from './auth/list/list.component'
     FilterPipe,
     SortPipe,
     PlanItemComponent,
-    ModalComponent,
-    ListComponent
+    ModalComponent
   ],
   imports: [
     BrowserModule,
