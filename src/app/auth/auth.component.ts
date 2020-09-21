@@ -45,18 +45,19 @@ export class AuthComponent implements OnInit {
       '23',
       '54',
       '1004',
-      '235',
+      '-235',
       '005_Донецька 8а',
       '011_Лятошинського 24а',
       '048_Переяслав-Хмельницький',
       '047_Перемоги,125 літера А',
       '008_Перова 52а',
       '264_Оноре де Бальзака, буд. 22 літ А',
-      '252_м. Вишгород, вул. Набережна 8-Д корп.3'
+      '_252_м. Вишгород, вул. Набережна 8-Д корп.3'
     ];
 
     const sortedPlans = plans.sort(function (a: any, b: any) {
-      const isDigit = /(^\d+)(\w)(\W)/gi;
+      const isDigit = /[(^\d)(^\w)(^\W)]/;
+      // const isDigit =/[\d\w\W]/gi;
       const aLoweCase = a.toLowerCase();
       const bLoweCase = b.toLowerCase();
       const firstSymbolA = aLoweCase.match(isDigit);
@@ -73,7 +74,7 @@ export class AuthComponent implements OnInit {
     })
 
 
-    console.log(sortedPlans)
+    console.log(sortedPlans); 
    }
 
   handler() { 
