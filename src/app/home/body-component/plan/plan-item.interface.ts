@@ -1,4 +1,4 @@
-export interface Plan {
+export interface PlanItem {
   active: boolean;
   conf: object;
   editable: boolean;

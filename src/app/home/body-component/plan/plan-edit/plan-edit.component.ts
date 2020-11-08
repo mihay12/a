@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, ElementRef, ViewChild} from '@angular/core';
+import { Component, AfterViewInit, ElementRef, ViewChild} from '@angular/core';
 import { fromEvent } from 'rxjs';
 import { Instrument } from '../interface/instrument.interface';
 import { PlanService } from '../service/plan.service';
@@ -11,7 +11,8 @@ import { PlanService } from '../service/plan.service';
 export class PlanEditComponent implements AfterViewInit {
 
   @ViewChild('canvas') public canvas: ElementRef;
-
+  planId;
+  
   width:number = 1000;
   height:number = 500;
   coordinatesUp;

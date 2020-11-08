@@ -41,7 +41,7 @@ import { DynamicDirective } from './home/body-component/plan/directive/dynamic.d
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule,
+    HttpClientModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
