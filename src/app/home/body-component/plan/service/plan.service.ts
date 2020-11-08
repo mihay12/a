@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators';
-import { Plan } from '../plan.interface';
+import { Plan } from '../interface/plan.interface';
+import { Instrument } from '../interface/instrument.interface';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class PlanService {
     return this.http.get<Plan[]>(this.url).pipe(
       map(response => response)).toPromise();
   }
-
+  
   public deletePlanRequest(id: number): Promise<Plan> {  
     return this.http.delete<Plan>(`${this.url}${id}/`).pipe(
       map(response => response)).toPromise();
@@ -35,6 +36,11 @@ export class PlanService {
   
   public getPlanItem(): Promise<Plan[]> {
     return this.http.get<Plan[]>(this.url).pipe(
+      map(response => response)).toPromise();
+  }
+
+  public getInstumentRequest(): Promise<Instrument[]> {
+    return this.http.get<Instrument[]>('http://app2.test.planohero.com/api/layout/instruments/?detail=1').pipe(
       map(response => response)).toPromise();
   }
 }

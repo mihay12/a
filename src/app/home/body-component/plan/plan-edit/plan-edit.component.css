@@ -1,8 +1,68 @@
-div {
+div canvas {
     margin-top: 100px;
-}
-
-canvas {
     border: 2px solid black;
     cursor: crosshair;
+}
+
+.left-panel {
+    margin: 100px 13px 0 0;
+    background-color: #fff;
+    width: 100px;
+    height: 200px;
+    cursor: pointer;
+}
+
+.instrument-panel {
+    width: 400px;
+    height: 400px;
+    background-color: #fff;
+    position: absolute;
+    border: 1px solid black;
+}
+.instrument-panel .scroll-container {
+    overflow: scroll;
+    height: 80%;
+}
+
+.instrument-panel .scroll-container table {
+    background-color: white;
+    min-width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    width: 100%;
+    height: 100%;
+    margin-left: 5px;
+}
+
+.instrument-panel .scroll-container table tbody {
+    display: block;
+    height: 100%;
+}
+.instrument-panel .scroll-container table thead tr th {
+    padding: 10px 0 10px 0;
+    border: 1px solid black;
+    background-color: green;
+    display: inline-block;
+    width: 350px;
+    margin-left: 5px;
+}
+
+.instrument-panel .scroll-container table tbody tr td {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 350px;
+    white-space: nowrap;
+    padding: 10px 0 10px 0;
+    border: 1px solid black;
+    margin-left: 5px;
+}
+
+.left-panel svg {
+    width: 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-around;
 }

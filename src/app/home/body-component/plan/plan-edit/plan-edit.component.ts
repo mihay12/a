@@ -1,5 +1,7 @@
 import { Component, AfterViewInit, Input, ElementRef, ViewChild} from '@angular/core';
 import { fromEvent } from 'rxjs';
+import { Instrument } from '../interface/instrument.interface';
+import { PlanService } from '../service/plan.service';
 
 @Component({
   selector: 'app-plan-edit',
@@ -15,9 +17,18 @@ export class PlanEditComponent implements AfterViewInit {
   coordinatesUp;
   coordinatesDown;
   ctx: CanvasRenderingContext2D; 
+  open: boolean = false;
+  instruments: Instrument[];
 
-  constructor() { }
+  openPanel() {
+    return this.open = true;
+  }
+  
+  constructor(private standInstrument: PlanService) { }
 
+  async ngOnInit(): Promise<void> {
+    this.instruments = await this.standInstrument.getInstumentRequest();
+  }
   ngAfterViewInit(): void {
     const canvasElement: HTMLCanvasElement = this.canvas.nativeElement;
     this.ctx = canvasElement.getContext('2d');

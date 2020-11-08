@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { PlanService } from './service/plan.service';
-import { Plan } from './plan.interface';
+import { Plan } from './interface/plan.interface';
 
 @Component({
   selector: 'app-plan',

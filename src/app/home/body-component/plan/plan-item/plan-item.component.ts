@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
-import { Plan } from '../plan.interface';
+import { Plan } from '../interface/plan.interface';
 import { ModalService } from 'src/app/modal/service/modal.service';
 
 @Component({

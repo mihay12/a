@@ -18,7 +18,7 @@ import { SortPipe } from './home/body-component/plan/pipe/sort.pipe';
 import { PlanItemComponent } from './home/body-component/plan/plan-item/plan-item.component';
 import { PlanEditComponent } from './home/body-component/plan/plan-edit/plan-edit.component';
 import { ModalComponent } from './modal/modal.component';
-
+import { DynamicDirective } from './home/body-component/plan/directive/dynamic.directive'
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +32,8 @@ import { ModalComponent } from './modal/modal.component';
     SortPipe,
     PlanItemComponent,
     PlanEditComponent,
-    ModalComponent
+    ModalComponent,
+    DynamicDirective
   ],
   imports: [
     BrowserModule,
