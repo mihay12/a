@@ -1,4 +1,5 @@
 import { Component, AfterViewInit, Input, ElementRef, ViewChild} from '@angular/core';
+import Konva from 'konva';
 import { fromEvent } from 'rxjs';
 import { Instrument } from '../interface/instrument.interface';
 import { PlanService } from '../service/plan.service';
@@ -10,13 +11,13 @@ import { PlanService } from '../service/plan.service';
 })
 export class PlanEditComponent implements AfterViewInit {
 
-  @ViewChild('canvas') public canvas: ElementRef;
+  // @ViewChild('canvas') public canvas: ElementRef;
 
-  width:number = 1000;
-  height:number = 500;
-  coordinatesUp;
-  coordinatesDown;
-  ctx: CanvasRenderingContext2D; 
+  // width:number = 1000;
+  // height:number = 500;
+  // coordinatesUp;
+  // coordinatesDown;
+  // ctx: CanvasRenderingContext2D; 
   open: boolean = false;
   instruments: Instrument[];
 
@@ -29,59 +30,114 @@ export class PlanEditComponent implements AfterViewInit {
   async ngOnInit(): Promise<void> {
     this.instruments = await this.standInstrument.getInstumentRequest();
   }
+
   ngAfterViewInit(): void {
-    const canvasElement: HTMLCanvasElement = this.canvas.nativeElement;
-    this.ctx = canvasElement.getContext('2d');
+    const stage = new Konva.Stage({
+      container: 'canvas-container',
+      width: 500,
+      height: 500
+    });
+    
+    const layer = new Konva.Layer();
+      stage.add(layer);
 
-    canvasElement.width = this.width;
-    canvasElement.height = this.height;
+      let isPaint = false;
+      let lastLine;
 
-    this.ctx.lineWidth = 3;
-    this.ctx.lineCap = 'round';
-    this.ctx.strokeStyle = '#000';
+      stage.on('mousedown', e => {
+        isPaint = true;
+        let pos = stage.getPointerPosition();
+        lastLine = new Konva.Line({
+          stroke: 'black',
+          strokeWidth: 5,
+          points: [pos.x, pos.y],
+        });
+        layer.add(lastLine);
+      });
 
-    this.captureEvents(canvasElement);
+      stage.on('mouseup', () => {
+        isPaint = false;
+      });
+
+      stage.on('mousemove', () => {
+        if (!isPaint) {
+          return;
+        }
+
+        const pos = stage.getPointerPosition();
+        let newPoints = lastLine.points().concat([pos.x, pos.y]);
+        lastLine.points(newPoints);
+        layer.batchDraw();
+      });
+    
+    // const circle = new Konva.Circle({
+    //   x: stage.width() / 2,
+    //   y: stage.height() / 2,
+    //   radius: 70,
+    //   fill: 'red',
+    //   stroke: 'black',
+    //   strokeWidth: 4
+    // })
+    
+    // layer.add(circle);
+
+
+
+    // layer.draw;
   }
 
-  private captureEvents(canvasElement: HTMLCanvasElement) {
-    fromEvent(canvasElement, 'mousedown')
-      .subscribe((result: MouseEvent) => {
-        const rect = canvasElement.getBoundingClientRect();
-        this.coordinatesDown = {
-          x: result.clientX - rect.left,
-          y: result.clientY - rect.top
-        };
-    });
+  //   const canvasElement: HTMLCanvasElement = this.canvas.nativeElement;
+  //   this.ctx = canvasElement.getContext('2d');
 
-    fromEvent(canvasElement, 'mousemove').subscribe(() => {
-        this.drawOnCanvas();
-    });
+  //   canvasElement.width = this.width;
+  //   canvasElement.height = this.height;
 
-    fromEvent(canvasElement, 'mouseup').subscribe((result: MouseEvent) => {
-      const rect = canvasElement.getBoundingClientRect();
-        this.coordinatesUp = {
-          x: result.clientX - rect.left,
-          y: result.clientY - rect.top
-        };
-        this.drawOnCanvas();
-    });
-   }
+  //   this.ctx.lineWidth = 3;
+  //   this.ctx.lineCap = 'round';
+  //   this.ctx.strokeStyle = '#000';
 
-  private drawOnCanvas() {
-    if (!this.ctx) return;
+  //   this.captureEvents(canvasElement);
+  // }
 
-    this.ctx.beginPath();
-    if (this.coordinatesDown) {
-      this.ctx.moveTo(this.coordinatesDown.x, this.coordinatesDown.y);
-      this.ctx.lineTo(this.coordinatesUp.x, this.coordinatesUp.y)
-      this.ctx.stroke();
-    }
-    this.ctx.closePath();
-  }
+  // private captureEvents(canvasElement: HTMLCanvasElement) {
+  //   fromEvent(canvasElement, 'mousedown')
+  //     .subscribe((result: MouseEvent) => {
+  //       const rect = canvasElement.getBoundingClientRect();
+  //       this.coordinatesDown = {
+  //         x: result.clientX - rect.left,
+  //         y: result.clientY - rect.top
+  //       };
+  //   });
 
-  clear() {
-    const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
-    this.ctx = canvasEl.getContext('2d');
-    this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
-  }
+  //   fromEvent(canvasElement, 'mousemove').subscribe(() => {
+  //       this.drawOnCanvas();
+  //   });
+
+  //   fromEvent(canvasElement, 'mouseup').subscribe((result: MouseEvent) => {
+  //     const rect = canvasElement.getBoundingClientRect();
+  //       this.coordinatesUp = {
+  //         x: result.clientX - rect.left,
+  //         y: result.clientY - rect.top
+  //       };
+  //       this.drawOnCanvas();
+  //   });
+  //  }
+
+  // private drawOnCanvas() {
+  //   if (!this.ctx) return;
+
+  //   this.ctx.beginPath();
+  //   if (this.coordinatesDown) {
+  //     this.ctx.moveTo(this.coordinatesDown.x, this.coordinatesDown.y);
+  //     this.ctx.lineTo(this.coordinatesUp.x, this.coordinatesUp.y)
+  //     this.ctx.stroke();
+  //   }
+  //   this.ctx.closePath();
+  // }
+
+  // clear() {
+  //   const canvasEl: HTMLCanvasElement = this.canvas.nativeElement;
+  //   this.ctx = canvasEl.getContext('2d');
+  //   this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
+  // }
 }

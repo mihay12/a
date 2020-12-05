@@ -10,7 +10,7 @@ import { Instrument } from '../interface/instrument.interface';
 
 export class PlanService {
 
-  url = 'http://app2.test.planohero.com/api/layout/planograms/'
+  url = 'http://app5.test.planohero.com/api/layout/planograms/'
 
   constructor(private http: HttpClient) { }
   
@@ -40,7 +40,7 @@ export class PlanService {
   }
 
   public getInstumentRequest(): Promise<Instrument[]> {
-    return this.http.get<Instrument[]>('http://app2.test.planohero.com/api/layout/instruments/?detail=1').pipe(
+    return this.http.get<Instrument[]>('http://app5.test.planohero.com/api/layout/instruments/?detail=1').pipe(
       map(response => response)).toPromise();
   }
 }
