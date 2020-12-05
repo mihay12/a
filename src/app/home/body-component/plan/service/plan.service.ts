@@ -34,10 +34,10 @@ export class PlanService {
       map(response => response)).toPromise();
   }
   
-  public getPlanItem(): Promise<Plan[]> {
-    return this.http.get<Plan[]>(this.url).pipe(
-      map(response => response)).toPromise();
-  }
+  // public getPlanItem(id: number): Promise<PlanItem> {
+  //   return this.http.get<PlanItem>(`${this.url}${id}/`).pipe(
+  //     map(response => response)).toPromise();
+  // }
 
   public getInstumentRequest(): Promise<Instrument[]> {
     return this.http.get<Instrument[]>('http://app5.test.planohero.com/api/layout/instruments/?detail=1').pipe(
