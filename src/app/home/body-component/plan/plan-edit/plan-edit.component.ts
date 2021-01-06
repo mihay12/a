@@ -1,4 +1,4 @@
-import { Component, AfterViewInit, Input, ElementRef, ViewChild} from '@angular/core';
+import { Component, AfterViewInit, Input, ElementRef, ViewChild, HostListener} from '@angular/core';
 import Konva from 'konva';
 import { fromEvent } from 'rxjs';
 import { Instrument } from '../interface/instrument.interface';
@@ -20,15 +20,18 @@ export class PlanEditComponent implements AfterViewInit {
   // ctx: CanvasRenderingContext2D; 
   open: boolean = false;
   instruments: Instrument[];
+  displayInstruments = [];
+  page: number = 1;
 
   openPanel() {
-    return this.open = true;
+    return this.open = !this.open;
   }
   
   constructor(private standInstrument: PlanService) { }
 
   async ngOnInit(): Promise<void> {
     this.instruments = await this.standInstrument.getInstumentRequest();
+    this.displayInstruments = [...this.instruments.slice(0, this.page * 20)];
   }
 
   ngAfterViewInit(): void {
@@ -46,7 +49,8 @@ export class PlanEditComponent implements AfterViewInit {
 
       stage.on('mousedown', e => {
         isPaint = true;
-        let pos = stage.getPointerPosition();
+        let pos = stage.getPointerPosition(),
+        rect = stage.getClientRect();
         lastLine = new Konva.Line({
           stroke: 'black',
           strokeWidth: 5,
@@ -140,4 +144,12 @@ export class PlanEditComponent implements AfterViewInit {
   //   this.ctx = canvasEl.getContext('2d');
   //   this.ctx.clearRect(0, 0, canvasEl.width, canvasEl.height);
   // }
+
+    @HostListener('scroll', ['$event'])
+  onScroll(event: any) {
+    if (event.target.offsetHeight + event.target.scrollTop >= event.target.scrollHeight) {
+      this.displayInstruments = [...this.instruments.slice(0, this.page * 20)];
+      this.page++;
+    }
+  }
 }

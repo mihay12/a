@@ -7,7 +7,9 @@
         <div class="instrument-panel" *ngIf="open">
             <p>Панель інструментів</p>
             <input [(ngModel)]="searchText">
-            <div class="scroll-container">
+            <div class="scroll-container"
+                (scroll)="onScroll($event)"
+            >
                 <table>
                     <thead>
                         <tr>
@@ -15,7 +17,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let instrument of instruments | filter: searchText">
+                        <tr *ngFor="let instrument of displayInstruments | filter: searchText">
                             <td title="{{instrument.name}}">{{instrument.name}}</td>
                         </tr>
                     </tbody>

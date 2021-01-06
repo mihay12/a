@@ -13,7 +13,7 @@ export class AuthService {
     private router: Router) { }
 
   loginUser(user) {
-    const url = 'http://app5.test.planohero.com//api/auth/token/get/';
+    const url = 'http://app3.test.planohero.com//api/auth/token/get/';
     return this.http.post<any>(url, user);
   }
 
